@@ -133,8 +133,10 @@ def main():
                 model_list = pd.read_csv("model_list.csv")
                 result = find_matching_data(model_list, rated_cooling_capacity_kw, years_passed)
 
-                st.write("おすすめ製品")
+                st.write("おすすめ製品(現在のエアコンと同じ冷房能力)")
+                st.write("補助金申請受付期間は2027年4月30日まで(※上限に到達次第修了)")
                 st.dataframe(result[["model", "manufacturer", "kW", "price", "subsidy"]])
+                st.link_button("エアコンを注文する", "https://home.tokyo-gas.co.jp/housing/exchange/index.html")
             else:
                 st.error("Gemini モデルの初期化に失敗しました。")
         else:
